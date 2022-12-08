@@ -5,6 +5,7 @@ export const LandingPage: FC = () => {
     useEffect(() => {
         getAllProducts().then((data) => console.log);
     }, []);
+
     return(
         <div>
             <h1>hello!</h1>
