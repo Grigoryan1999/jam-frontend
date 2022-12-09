@@ -41,8 +41,6 @@ api.interceptors.response.use(
           }
         );
 
-        console.log(response.data);
-
         const token: any = response.data;
 
         localStorage.setItem("token", token.accessToken);

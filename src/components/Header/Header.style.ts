@@ -14,7 +14,7 @@ export const HeaderContainer = styled.div<{ expanded: boolean }>`
     flex-direction: column;
     height: ${(props) => (props.expanded ? "100vh" : "80px")};
     padding-bottom: ${(props) => (props.expanded ? "50px" : 0)};
-    margin-top: 10px;
+    padding-top: 10px;
   }
 `;
 
@@ -53,7 +53,7 @@ export const MenuBlock = styled.div`
 export const BurgerContainer = styled.div<{ expanded: boolean }>`
   display: none;
   flex-direction: column;
-  position: absolute;
+  position: fixed;
   z-index: 10;
   right: 0;
   margin: 25px;

@@ -36,13 +36,14 @@ export const Container = css`
   }
 `;
 
-export const PrimaryButton = styled.button`
+export const ButtonStyle = css`
   background-color: #f4f4f4;
   border: none;
   outline: none;
   font-size: 16px;
   padding: 10px 20px;
   border-radius: 3px;
+  white-space: nowrap;
   cursor: pointer;
 
   &:hover {
@@ -55,9 +56,36 @@ export const PrimaryButton = styled.button`
   }
 `;
 
+export const PrimaryButton = styled.button`
+  ${ButtonStyle}
+`;
+
+export const CategoryItem = styled.button`
+  ${ButtonStyle}
+  border-radius: 30px;
+  margin-right: 10px;
+`;
+
+export const OrangeButton = styled.button`
+  ${ButtonStyle}
+  background-color: orange;
+  color: white;
+  font-size: 22px;
+  padding: 15px 25px;
+  &:hover {
+    background-color: #df6b00;
+  }
+
+  &:active {
+    background-color: #b65700;
+  }
+`;
+
 export const PageContainer = styled.div`
   ${Container}
-  margin-top: 75px;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const BigTitle = styled.h1``;
