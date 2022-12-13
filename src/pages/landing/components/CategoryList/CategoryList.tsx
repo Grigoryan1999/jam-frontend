@@ -1,6 +1,6 @@
 import { Dispatch, FC, SetStateAction, useCallback, useEffect, useRef, useState } from "react";
-import { ICategory } from "../../../entities";
-import { CategoryItem } from "../../../global";
+import { ICategory } from "../../../../entities";
+import { CategoryItem } from "../../../../global";
 import { CategoryListContainer } from "./CategoryList.style";
 
 const itemListGap = 10;

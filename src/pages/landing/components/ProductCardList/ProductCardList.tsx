@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { IProduct } from "../../../entities";
-import { CenterWrapper } from "../../../global";
-import { ProductCard } from "./ProductCard";
-import { Title } from "./ProductCard.style";
+import { IProduct } from "../../../../entities";
+import { CenterWrapper } from "../../../../global";
+import { ProductCard } from "../ProductCard/ProductCard";
+import { Title } from "../ProductCard/ProductCard.style";
 import { ProductCardListContainer } from "./ProductCardList.style";
 
 

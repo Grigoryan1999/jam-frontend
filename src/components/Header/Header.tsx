@@ -7,15 +7,19 @@ import { HeaderContainer, Logo, MenuBlock } from "./Header.style";
 export const Header: FC = () => {
     const [menuExpanded, setMenuExpanded] = useState(false);
 
+    const linkClickHandle = () => {
+        setMenuExpanded(false);
+    }
+
     return(
         <CenterWrapper>
             <HeaderContainer expanded={menuExpanded}>
                 <Logo src="./icons/logo.jpg" />
                 <MenuBlock>
-                    <NavLink to='/'>Главная</NavLink>
-                    <NavLink to='/order'>Оставить заявку</NavLink>
-                    <NavLink to='/map'>Мы на карте</NavLink>
-                    <NavLink to='/about'>О нас</NavLink>
+                    <NavLink to='/' onClick={linkClickHandle}>Главная</NavLink>
+                    <NavLink to='/order' onClick={linkClickHandle}>Оставить заявку</NavLink>
+                    <NavLink to='/map' onClick={linkClickHandle}>Мы на карте</NavLink>
+                    <NavLink to='/about' onClick={linkClickHandle}>О нас</NavLink>
                 </MenuBlock>
                 <PrimaryButton>Войти</PrimaryButton>
             </HeaderContainer>

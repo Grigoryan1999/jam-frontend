@@ -1,5 +1,6 @@
-import { device } from "./../../../assets/ScreenResolutions";
 import styled from "styled-components";
+import { device } from "../../../../assets/ScreenResolutions";
+
 export const LandingTitle = styled.h1`
   font-size: 50px;
   line-height: 100%;

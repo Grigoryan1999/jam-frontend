@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
-import { Modal } from "../../../components/Modal/Modal";
-import { IMarketProduct, IProduct } from "../../../entities";
-import { Title, Text, SmallTitle } from "../../../global";
+import { Modal } from "../../../../components/Modal/Modal";
+import { IMarketProduct, IProduct } from "../../../../entities";
+import { Title, Text, SmallTitle } from "../../../../global";
 import { EmptyPicture, FullProductInfo, MarketsField, Picture, Price, ProductCardContainer, ProductCount, ProductModalField } from "./ProductCard.style";
 
 const emptyProductCost = 0;
