@@ -19,8 +19,6 @@ export const LandingPage: FC = () => {
         dispatch(getAllCategories());
     }, [dispatch]);
 
-    useEffect(() => console.log(categories), [categories]);
-
     return(
         <>
             <LandingHeader />

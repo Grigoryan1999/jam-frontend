@@ -1,3 +1,4 @@
+import { device } from "./../../../assets/ScreenResolutions";
 import styled from "styled-components";
 export const LandingTitle = styled.h1`
   font-size: 50px;
@@ -15,6 +16,9 @@ export const LandingTitle = styled.h1`
     width: 300px;
     height: 300px;
   }
+  @media (${device.mobile}) {
+    font-size: 35px;
+  }
 `;
 
 export const OrangeText = styled.span`
@@ -24,6 +28,11 @@ export const OrangeText = styled.span`
 export const LeftHeaderPanel = styled.div`
   width: 55%;
   height: 300px;
+
+  @media (${device.mobile}) {
+    text-align: center;
+    height: fit-content;
+  }
 `;
 
 export const RightHeaderPanel = styled.div`
@@ -40,6 +49,9 @@ export const RightHeaderPanel = styled.div`
     border-radius: 30px;
     z-index: -1;
   }
+  @media (${device.mobile}) {
+    display: none;
+  }
 `;
 
 export const HeaderImage = styled.img`
@@ -55,4 +67,7 @@ export const LandingHeaderContainer = styled.div`
 export const LandingSubTitle = styled.p`
   color: gray;
   line-height: 150%;
+  @media (${device.mobile}) {
+    font-size: 14px;
+  }
 `;

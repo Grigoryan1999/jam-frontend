@@ -7,7 +7,7 @@ export const HeaderContainer = styled.div<{ expanded: boolean }>`
   background-color: white;
   height: 80px;
   position: fixed;
-  z-index: 10;
+  z-index: 1;
   overflow: hidden;
 
   @media (${device.tablet}) {
@@ -54,7 +54,7 @@ export const BurgerContainer = styled.div<{ expanded: boolean }>`
   display: none;
   flex-direction: column;
   position: fixed;
-  z-index: 10;
+  z-index: 1;
   right: 0;
   margin: 25px;
   height: auto;

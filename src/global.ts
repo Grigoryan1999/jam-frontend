@@ -64,6 +64,7 @@ export const CategoryItem = styled.button`
   ${ButtonStyle}
   border-radius: 30px;
   margin-right: 10px;
+  box-sizing: border-box;
 `;
 
 export const OrangeButton = styled.button`
@@ -79,6 +80,9 @@ export const OrangeButton = styled.button`
   &:active {
     background-color: #b65700;
   }
+  @media (${device.mobile}) {
+    font-size: 14px;
+  }
 `;
 
 export const PageContainer = styled.div`
@@ -91,3 +95,6 @@ export const PageContainer = styled.div`
 export const BigTitle = styled.h1``;
 export const Title = styled.h2``;
 export const SmallTitle = styled.h3``;
+export const Text = styled.p`
+  font-size: 14px;
+`;

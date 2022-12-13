@@ -11,7 +11,7 @@ export const LandingHeader: FC = () => {
                     <OrangeButton>Оставить заявку</OrangeButton>
                 </LeftHeaderPanel>
                 <RightHeaderPanel>
-                <HeaderImage src="./images/headerImage.png" />
+                    <HeaderImage src="./images/headerImage.png" />
                 </RightHeaderPanel>
             </LandingHeaderContainer>
     );
