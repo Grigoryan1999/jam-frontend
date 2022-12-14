@@ -29,10 +29,8 @@ api.interceptors.response.use(
     return confing;
   },
   async (error) => {
-    console.log(error.response);
     if (error.response.status === 401) {
       try {
-        console.log(2);
         const originRequest = error.config;
         const response = await axios.get<AuthenticatorResponse>(
           `${API_URL}/token`,
@@ -40,8 +38,6 @@ api.interceptors.response.use(
             withCredentials: true,
           }
         );
-
-        console.log(response.data);
 
         const token: any = response.data;
 

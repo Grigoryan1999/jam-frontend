@@ -1,14 +1,36 @@
-import { FC, useEffect } from "react";
-import getAllProducts from "../../api/getAllProducts";
+import { FC, useEffect, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux'
+import { ICategory } from "../../entities";
+import { BigTitle } from "../../global";
+import { getAllCategories } from "../../redux/actions/actionCreators";
+import { categoriesSelector } from "../../redux/selectors";
+import { CategoryList } from "./components/CategoryList";
+import { LandingHeader } from "./components/LandingHeader";
+import { ProductCardList } from "./components/ProductCardList";
+
 
 export const LandingPage: FC = () => {
+    const dispatch = useDispatch();
+
+    const categories = useSelector(categoriesSelector);
+    const [selectedCategory, setSelectedCategory] = useState<string>("");
+
     useEffect(() => {
-        getAllProducts().then((data) => console.log);
-    }, []);
+        dispatch(getAllCategories());
+    }, [dispatch, selectedCategory]);
+
+    useEffect(() => {
+        if(categories && !selectedCategory) {
+            setSelectedCategory(categories[0]?.uuid)
+        }
+    }, [categories, selectedCategory]);
 
     return(
-        <div>
-            <h1>hello!</h1>
-        </div>
+        <>
+            <LandingHeader />
+            <BigTitle>Наше меню</BigTitle>
+            <CategoryList categories={categories} onSelectCategory={setSelectedCategory} />
+            <ProductCardList products={categories?.find((categoryElement: ICategory) => categoryElement.uuid === selectedCategory)?.products} />
+        </>
     );
 }

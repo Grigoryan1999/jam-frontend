@@ -7,14 +7,14 @@ export const HeaderContainer = styled.div<{ expanded: boolean }>`
   background-color: white;
   height: 80px;
   position: fixed;
-  z-index: 10;
+  z-index: 1;
   overflow: hidden;
 
   @media (${device.tablet}) {
     flex-direction: column;
     height: ${(props) => (props.expanded ? "100vh" : "80px")};
     padding-bottom: ${(props) => (props.expanded ? "50px" : 0)};
-    margin-top: 10px;
+    padding-top: 10px;
   }
 `;
 
@@ -53,8 +53,8 @@ export const MenuBlock = styled.div`
 export const BurgerContainer = styled.div<{ expanded: boolean }>`
   display: none;
   flex-direction: column;
-  position: absolute;
-  z-index: 10;
+  position: fixed;
+  z-index: 1;
   right: 0;
   margin: 25px;
   height: auto;
