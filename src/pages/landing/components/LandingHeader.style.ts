@@ -16,8 +16,11 @@ export const LandingTitle = styled.h1`
     width: 300px;
     height: 300px;
   }
-  @media (${device.mobile}) {
+  @media (${device.mobileM}) {
     font-size: 35px;
+    ::after {
+      display: none;
+    }
   }
 `;
 

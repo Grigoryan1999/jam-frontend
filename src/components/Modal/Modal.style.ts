@@ -43,4 +43,8 @@ export const ModalCloseButton = styled.p`
   margin: 0;
   margin-left: auto;
   cursor: pointer;
+
+  @media (${device.mobileM}) {
+    margin-top: 10px;
+  }
 `;
