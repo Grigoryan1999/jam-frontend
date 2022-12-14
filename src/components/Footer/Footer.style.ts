@@ -39,4 +39,5 @@ export const FlexWrapper = styled.div`
 export const CopyrightText = styled.p`
   margin-top: 30px;
   font-size: 12px;
+  width: fit-content;
 `;

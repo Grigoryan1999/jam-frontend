@@ -15,6 +15,7 @@ export const CategoryListField = styled.div`
   margin-bottom: 10px;
 
   @media (${device.mobileM}) {
+    width: 100%;
     flex-wrap: nowrap;
     height: fit-content;
   }
