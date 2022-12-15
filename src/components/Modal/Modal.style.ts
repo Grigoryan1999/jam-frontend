@@ -29,8 +29,10 @@ export const ModalContent = styled.div<{
   scale: ${(props) => (props.isOpen ? 1 : 0)};
   transition: 0.4s scale;
   max-width: 500px;
+  max-height: 100vh;
 
-  @media (${device.mobileM}) {
+  @media (${device.mobile}) {
+    max-width: none;
     width: 100%;
     height: 100%;
   }
@@ -44,7 +46,7 @@ export const ModalCloseButton = styled.p`
   margin-left: auto;
   cursor: pointer;
 
-  @media (${device.mobileM}) {
+  @media (${device.mobile}) {
     margin-top: 10px;
   }
 `;

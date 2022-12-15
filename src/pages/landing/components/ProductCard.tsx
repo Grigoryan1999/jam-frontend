@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { Modal } from "../../../components/Modal/Modal";
 import { IMarketProduct, IProduct } from "../../../entities";
 import { Title, Text, SmallTitle } from "../../../global";
-import { EmptyPicture, FullProductInfo, MarketsField, Picture, Price, ProductCardContainer, ProductCount, ProductModalField } from "./ProductCard.style";
+import { EmptyPicture, FullProductInfo, MarketAddress, MarketsField, MarletProductInfo, Picture, Price, ProductCardContainer, ProductCount, ProductModalField, ProductPrice } from "./ProductCard.style";
 
 const emptyProductCost = 0;
 
@@ -41,6 +41,14 @@ export const ProductCard: FC<IProductCardProps> = ({productInfo}) => {
                     </FullProductInfo>
                     <MarketsField>
                         <SmallTitle>Магазины</SmallTitle>
+                            {
+                                productInfo.marketProduct.map((marketProductElement: IMarketProduct) => (
+                                    <MarletProductInfo>
+                                        <MarketAddress>{marketProductElement.market.address}</MarketAddress>
+                                        <ProductPrice>{marketProductElement.cost} руб</ProductPrice>
+                                    </MarletProductInfo>
+                                ))
+                            }
                     </MarketsField>
                 </ProductModalField>
             </Modal>
