@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { OrangeButton } from "../../../global";
+import { OrangeButton } from "../../../../global";
 import { HeaderImage, LandingHeaderContainer, LandingSubTitle, LandingTitle, LeftHeaderPanel, OrangeText, RightHeaderPanel } from "./LandingHeader.style";
 
 export const LandingHeader: FC = () => {

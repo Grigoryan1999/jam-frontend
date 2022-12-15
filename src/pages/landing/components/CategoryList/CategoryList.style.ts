@@ -1,5 +1,5 @@
-import { device } from "./../../../assets/ScreenResolutions";
 import styled from "styled-components";
+import { device } from "../../../../assets/ScreenResolutions";
 
 export const CategoryListContainer = styled.div`
   position: relative;

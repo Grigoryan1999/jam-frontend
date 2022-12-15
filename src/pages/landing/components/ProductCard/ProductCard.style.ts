@@ -37,3 +37,18 @@ export const MarketsField = styled.div``;
 export const ProductCount = styled.p`
   font-weight: 800;
 `;
+
+export const MarketItemInfo = styled.p`
+  height: 46px;
+  font-size: 14px;
+  background-color: #ebebeb;
+  margin: 0;
+  padding-top: 10px;
+  margin-bottom: 1px;
+  border-radius: 5px;
+  padding-left: 5px;
+`;
+
+export const MarketListField = styled.div`
+  overflow-y: scroll;
+`;

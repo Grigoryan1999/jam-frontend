@@ -1,8 +1,8 @@
 import { FC, useEffect, useState } from "react";
-import { Modal } from "../../../components/Modal/Modal";
-import { IMarketProduct, IProduct } from "../../../entities";
-import { Title, Text, SmallTitle } from "../../../global";
-import { EmptyPicture, FullProductInfo, MarketsField, Picture, Price, ProductCardContainer, ProductCount, ProductModalField } from "./ProductCard.style";
+import { Modal } from "../../../../components/Modal/Modal";
+import { IMarketProduct, IProduct } from "../../../../entities";
+import { SmallTitle, Text } from "../../../../global";
+import { EmptyPicture, FullProductInfo, MarketItemInfo, MarketListField, MarketsField, Picture, Price, ProductCardContainer, ProductCount, ProductModalField, Title } from "./ProductCard.style";
 
 const emptyProductCost = 0;
 
@@ -41,6 +41,22 @@ export const ProductCard: FC<IProductCardProps> = ({productInfo}) => {
                     </FullProductInfo>
                     <MarketsField>
                         <SmallTitle>Магазины</SmallTitle>
+                        <MarketListField>
+                        {
+                            productInfo.marketProduct.map((marketProduct: IMarketProduct) => (
+                                <MarketItemInfo>
+                                    {marketProduct.market.address}
+                                </MarketItemInfo>
+                            ))
+                        }
+                                                {
+                            productInfo.marketProduct.map((marketProduct: IMarketProduct) => (
+                                <MarketItemInfo>
+                                    {marketProduct.market.address}
+                                </MarketItemInfo>
+                            ))
+                        }
+                        </MarketListField>
                     </MarketsField>
                 </ProductModalField>
             </Modal>

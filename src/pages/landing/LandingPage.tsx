@@ -4,9 +4,9 @@ import { ICategory } from "../../entities";
 import { BigTitle } from "../../global";
 import { getAllCategories } from "../../redux/actions/actionCreators";
 import { categoriesSelector } from "../../redux/selectors";
-import { CategoryList } from "./components/CategoryList";
-import { LandingHeader } from "./components/LandingHeader";
-import { ProductCardList } from "./components/ProductCardList";
+import { CategoryList } from "./components/CategoryList/CategoryList";
+import { LandingHeader } from "./components/LandingHeader/LandingHeader";
+import { ProductCardList } from "./components/ProductCardList/ProductCardList";
 
 
 export const LandingPage: FC = () => {

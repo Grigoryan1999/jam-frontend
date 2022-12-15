@@ -1,10 +1,10 @@
 import { Dispatch, FC, SetStateAction, useCallback, useEffect, useRef, useState } from "react";
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import { ICategory } from "../../../entities";
-import { CategoryItem } from "../../../global";
 import { CategoryListContainer, CategoryListField, SelectProductListField } from "./CategoryList.style";
-import { screenSize } from "../../../assets/ScreenResolutions";
+import { ICategory } from "../../../../entities";
+import { screenSize } from "../../../../assets/ScreenResolutions";
+import { CategoryItem } from "../../../../global";
 
 const itemListGap = 10;
 

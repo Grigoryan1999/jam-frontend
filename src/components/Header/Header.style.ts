@@ -36,6 +36,7 @@ export const MenuBlock = styled.div`
   .active {
     color: black;
     font-weight: 800;
+    line-height: 1;
   }
 
   @media (${device.tablet}) {
@@ -60,6 +61,25 @@ export const BurgerContainer = styled.div<{ expanded: boolean }>`
   height: auto;
   cursor: pointer;
 
+  ${props => props.expanded && `
+    & > :nth-child(2n) {
+      display: none;
+      transition: 0.4s all;
+    }
+
+    & > :first-child {
+      transform: rotate(45deg);
+      margin-top: 5px;
+      transition: 0.4s all;
+    }
+
+    & > :last-child {
+      transform: rotate(-45deg);
+      margin-top: -10px;
+      transition: 0.4s all;
+    }`
+  }
+
   @media (${device.tablet}) {
     display: flex;
   }
@@ -70,4 +90,5 @@ export const Line = styled.div`
   width: 30px;
   background-color: black;
   margin-bottom: 5px;
+  transition: 0.4s all;
 `;
