@@ -4,18 +4,48 @@ import { CenterWrapper, PrimaryButton } from "../../global";
 import { Burger } from "./Burger";
 import { HeaderContainer, Logo, MenuBlock } from "./Header.style";
 
+const mainMenu = [
+    {
+        link: '/',
+        title: 'Главная',
+    },
+    {
+        link: '/order',
+        title: 'Оставить заявку',
+    },
+    {
+        link: '/map',
+        title: 'Мы на карте',
+    },
+    {
+        link: '/about',
+        title: 'О нас',
+    },
+]
+
 export const Header: FC = () => {
     const [menuExpanded, setMenuExpanded] = useState(false);
+
+    const onMenuLinkHandle = () => {
+        setMenuExpanded(false);
+    }
 
     return(
         <CenterWrapper>
             <HeaderContainer expanded={menuExpanded}>
                 <Logo src="./icons/logo.jpg" />
                 <MenuBlock>
-                    <NavLink to='/'>Главная</NavLink>
-                    <NavLink to='/order'>Оставить заявку</NavLink>
-                    <NavLink to='/map'>Мы на карте</NavLink>
-                    <NavLink to='/about'>О нас</NavLink>
+                    {
+                        mainMenu.map((menuElement) => (
+                            <NavLink
+                                key={menuElement.link}
+                                to={menuElement.link}
+                                onClick={onMenuLinkHandle}
+                            >
+                                {menuElement.title}
+                            </NavLink>
+                        ))
+                    }
                 </MenuBlock>
                 <PrimaryButton>Войти</PrimaryButton>
             </HeaderContainer>
