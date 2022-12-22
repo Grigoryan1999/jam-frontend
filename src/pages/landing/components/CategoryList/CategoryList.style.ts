@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { device } from "../../../../assets/ScreenResolutions";
+import { ScrollBarStyle } from "../../../../global";
 
 export const CategoryListContainer = styled.div`
   position: relative;
@@ -13,6 +14,7 @@ export const CategoryListField = styled.div`
   flex-wrap: wrap;
   overflow-y: hidden;
   margin-bottom: 10px;
+  ${ScrollBarStyle}
 
   @media (${device.mobileM}) {
     width: 100%;

@@ -1,5 +1,5 @@
 import { device } from "./../../assets/ScreenResolutions";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Container } from "../../global";
 
 export const HeaderContainer = styled.div<{ expanded: boolean }>`
@@ -10,7 +10,7 @@ export const HeaderContainer = styled.div<{ expanded: boolean }>`
   z-index: 1;
   overflow: hidden;
 
-  @media (${device.tablet}) {
+  @media ${device.tablet} {
     flex-direction: column;
     height: ${(props) => (props.expanded ? "100vh" : "80px")};
     padding-bottom: ${(props) => (props.expanded ? "50px" : 0)};
@@ -39,7 +39,7 @@ export const MenuBlock = styled.div`
     line-height: 1;
   }
 
-  @media (${device.tablet}) {
+  @media ${device.tablet} {
     flex-direction: column;
     align-items: center;
     margin: 30px;
@@ -61,7 +61,14 @@ export const BurgerContainer = styled.div<{ expanded: boolean }>`
   height: auto;
   cursor: pointer;
 
-  ${props => props.expanded && `
+  ${props => props.expanded && ExpandedBurger}
+
+  @media (${device.tablet}) {
+    display: flex;
+  }
+`;
+
+const ExpandedBurger = css`
     & > :nth-child(2n) {
       display: none;
       transition: 0.4s all;
@@ -77,12 +84,7 @@ export const BurgerContainer = styled.div<{ expanded: boolean }>`
       transform: rotate(-45deg);
       margin-top: -10px;
       transition: 0.4s all;
-    }`
-  }
-
-  @media (${device.tablet}) {
-    display: flex;
-  }
+    }
 `;
 
 export const Line = styled.div`

@@ -14,6 +14,20 @@ export default createGlobalStyle`
     }
 `;
 
+export const ScrollBarStyle = css`
+    ::-webkit-scrollbar {
+      width: 12px;               
+    }
+    ::-webkit-scrollbar-track {
+      background: #f4f4f4;        
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #d3d3d3;
+      border: 2px solid #f4f4f4;
+      border-radius: 20px;
+    }
+`;
+
 export const CenterWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -87,6 +101,7 @@ export const OrangeButton = styled.button`
 
 export const PageContainer = styled.div`
   ${Container}
+  align-items: flex-start;
   margin-top: 100px;
   display: flex;
   flex-direction: column;
@@ -97,4 +112,5 @@ export const Title = styled.h2``;
 export const SmallTitle = styled.h3``;
 export const Text = styled.p`
   font-size: 14px;
+  line-height: 150%;
 `;
