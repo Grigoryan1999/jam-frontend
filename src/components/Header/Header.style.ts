@@ -10,7 +10,7 @@ export const HeaderContainer = styled.div<{ expanded: boolean }>`
   z-index: 1;
   overflow: hidden;
 
-  @media (${device.tablet}) {
+  @media ${device.tablet} {
     flex-direction: column;
     height: ${(props) => (props.expanded ? "100vh" : "80px")};
     padding-bottom: ${(props) => (props.expanded ? "50px" : 0)};
@@ -39,7 +39,7 @@ export const MenuBlock = styled.div`
     line-height: 1;
   }
 
-  @media (${device.tablet}) {
+  @media ${device.tablet} {
     flex-direction: column;
     align-items: center;
     margin: 30px;
@@ -61,26 +61,28 @@ export const BurgerContainer = styled.div<{ expanded: boolean }>`
   height: auto;
   cursor: pointer;
 
-  ${props => props.expanded && `
-    & > :nth-child(2n) {
-      display: none;
-      transition: 0.4s all;
-    }
+    ${(props) =>
+      props.expanded &&
+      `
+        & > :nth-child(2n) {
+        display: none;
+        transition: 0.4s all;
+        }
 
-    & > :first-child {
-      transform: rotate(45deg);
-      margin-top: 5px;
-      transition: 0.4s all;
-    }
+        & > :first-child {
+        transform: rotate(45deg);
+        margin-top: 5px;
+        transition: 0.4s all;
+        }
 
-    & > :last-child {
-      transform: rotate(-45deg);
-      margin-top: -10px;
-      transition: 0.4s all;
+        & > :last-child {
+        transform: rotate(-45deg);
+        margin-top: -10px;
+        transition: 0.4s all;
     }`
   }
 
-  @media (${device.tablet}) {
+  @media ${device.tablet} {
     display: flex;
   }
 `;
