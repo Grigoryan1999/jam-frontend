@@ -6,7 +6,7 @@ import { setAllCategories } from "../actions/actionCreators";
 
 export function* workerGetCategoriesWithProducts(): Generator {
   try {
-    const response = (yield call(getCategoriesWithProducts)) as Response<
+    const response = (mockCategoriesList) as unknown as Response<
       ICategory[]
     >;
 

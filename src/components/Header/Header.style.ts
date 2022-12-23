@@ -1,5 +1,5 @@
 import { device } from "./../../assets/ScreenResolutions";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Container } from "../../global";
 
 export const HeaderContainer = styled.div<{ expanded: boolean }>`
@@ -61,30 +61,30 @@ export const BurgerContainer = styled.div<{ expanded: boolean }>`
   height: auto;
   cursor: pointer;
 
-    ${(props) =>
-      props.expanded &&
-      `
-        & > :nth-child(2n) {
-        display: none;
-        transition: 0.4s all;
-        }
+  ${props => props.expanded && ExpandedBurger}
 
-        & > :first-child {
-        transform: rotate(45deg);
-        margin-top: 5px;
-        transition: 0.4s all;
-        }
-
-        & > :last-child {
-        transform: rotate(-45deg);
-        margin-top: -10px;
-        transition: 0.4s all;
-    }`
-  }
-
-  @media ${device.tablet} {
+  @media (${device.tablet}) {
     display: flex;
   }
+`;
+
+const ExpandedBurger = css`
+    & > :nth-child(2n) {
+      display: none;
+      transition: 0.4s all;
+    }
+
+    & > :first-child {
+      transform: rotate(45deg);
+      margin-top: 5px;
+      transition: 0.4s all;
+    }
+
+    & > :last-child {
+      transform: rotate(-45deg);
+      margin-top: -10px;
+      transition: 0.4s all;
+    }
 `;
 
 export const Line = styled.div`

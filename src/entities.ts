@@ -8,13 +8,14 @@ export interface ICategory {
 }
 
 export interface IProduct {
-  uuid: number;
+  uuid: string;
   name: string;
   subscription: string;
   picture: string | null;
   drink: boolean;
   updated_at: string;
   created_at: string;
+  minimalCost: number;
   marketProduct: IMarketProduct[];
 }
 
@@ -35,6 +36,17 @@ export interface IMarket {
   longitude: number;
   updated_at: string;
   created_at: string;
+}
+
+export interface IProductForOrder {
+  productUuid: string;
+  count: number;
+}
+
+export interface IViewedProductForOrder extends IProductForOrder {
+  name: string;
+  picture: string | null;
+  cost: number;
 }
 
 export interface Response<T> {
