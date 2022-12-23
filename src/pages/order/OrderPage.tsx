@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import TextField from '@mui/material/TextField';
 import { InputLabel } from "@mui/material";
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 import { categoriesSelector, viewedProductsForOrderSelector } from "../../redux/selectors";
 import { ICategory, IProduct, IProductForOrder, IViewedProductForOrder } from "../../entities";
 import { useDispatch } from "react-redux";
-import { addProductToOrder } from "../../redux/actions/actionCreators";
+import { addProductToOrder, getAllCategories } from "../../redux/actions/actionCreators";
 import { OneProductItem } from "./components/OneProductItem/OneProductItem";
 import { EmptyProductBlock } from "./components/EmptyProductBlick/EmptyProductBlock";
 import { WarningOrderBlock } from "./components/WarningOrderBlock/WarningOrderBlock";
@@ -22,6 +22,10 @@ export const OrderPage: FC = () => {
     const categories = useSelector(categoriesSelector);
     const productsForOrder = useSelector(viewedProductsForOrderSelector);
     const dispatch = useDispatch();
+  
+    useEffect(() => {
+      dispatch(getAllCategories());
+  }, [dispatch]);
 
     const addProductHandle = (productUuid: string) => {
         const productForOrder: IProductForOrder = {

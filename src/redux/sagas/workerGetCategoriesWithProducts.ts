@@ -6,10 +6,10 @@ import { setAllCategories } from "../actions/actionCreators";
 
 export function* workerGetCategoriesWithProducts(): Generator {
   try {
-    const response = (mockCategoriesList) as unknown as Response<
-      ICategory[]
-    >;
+    const response = yield call(getCategoriesWithProducts);
 
-    yield put(setAllCategories(response));
+    yield put(setAllCategories(response as Response<
+      ICategory[]
+    >));
   } catch (e) {}
 }

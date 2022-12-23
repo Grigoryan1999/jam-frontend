@@ -8,17 +8,8 @@ import { OrderPage } from './pages/order/OrderPage';
 import { NotFountPage } from './pages/pageNotFound/PageNotFound';
 
 import GlobalStyles, { CenterWrapper, PageContainer } from './global'
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { getAllCategories } from './redux/actions/actionCreators';
 
 function App() {
-  const dispatch = useDispatch();
-  
-  useEffect(() => {
-    dispatch(getAllCategories());
-}, [dispatch]);
-
   return (
     <div className="App">
       <Header />

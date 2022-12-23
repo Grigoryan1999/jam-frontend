@@ -1,6 +1,14 @@
-import { IProductForOrder } from './../../entities';
+import { IMarket, IProductForOrder } from "./../../entities";
 import { ICategory, Response } from "../../entities";
-import { ADD_PRODUCT_TO_ORDER, CHANGE_PRODUCT_COUNT, GET_ALL_CATEGORIES, REMOVE_PRODUCT_FROM_ORDER, SET_ALL_CATEGORIES } from "./actionsTypes";
+import {
+  ADD_PRODUCT_TO_ORDER,
+  CHANGE_PRODUCT_COUNT,
+  GET_ALL_CATEGORIES,
+  GET_ALL_MARKETS,
+  REMOVE_PRODUCT_FROM_ORDER,
+  SET_ALL_CATEGORIES,
+  SET_ALL_MARKETS,
+} from "./actionsTypes";
 
 export function setAllCategories(categories: Response<ICategory[]>) {
   return {
@@ -36,7 +44,26 @@ export function removeProductFromOrder(productUuid: string) {
   } as const;
 }
 
-export type CategoriesAction = ReturnType<typeof setAllCategories
+export function getAllMarkets() {
+  return {
+    type: GET_ALL_MARKETS,
+  } as const;
+}
+
+export function setAllMarkets(markets: Response<IMarket[]>) {
+  return {
+    type: SET_ALL_MARKETS,
+    markets,
+  } as const;
+}
+
+export type CategoriesAction = ReturnType<
+  | typeof setAllCategories
   | typeof addProductToOrder
   | typeof changeProductToOrderCount
-  | typeof removeProductFromOrder>;
+  | typeof removeProductFromOrder
+>;
+
+export type MarketsAction = ReturnType<
+  typeof getAllMarkets | typeof setAllMarkets
+>;
