@@ -20,7 +20,6 @@ export const ProductCardList: FC<IProductCardListProps> = ({products}) => {
         </ProductCardListContainer>
     );
 }
-
 export interface IProductCardListProps {
     products?: IProduct[] | null;
 }

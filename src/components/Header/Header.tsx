@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { CenterWrapper, PrimaryButton } from "../../global";
 import { Burger } from "./Burger";
 import { HeaderContainer, Logo, MenuBlock } from "./Header.style";
@@ -47,7 +47,9 @@ export const Header: FC = () => {
                         ))
                     }
                 </MenuBlock>
-                <PrimaryButton>Войти</PrimaryButton>
+                <Link to={'/authorization'}>
+                    <PrimaryButton onClick={onMenuLinkHandle}>Войти</PrimaryButton>
+                </Link>
             </HeaderContainer>
             <Burger expanded={menuExpanded} expandCallback={setMenuExpanded} />
         </CenterWrapper>

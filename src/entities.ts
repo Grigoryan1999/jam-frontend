@@ -49,6 +49,35 @@ export interface IViewedProductForOrder extends IProductForOrder {
   cost: number;
 }
 
+export interface IAuthorization {
+  accessToken: string,
+}
+
+export interface ISignIn {
+  email: string,
+  password: string,
+}
+
+export interface ISignUp {
+  email: string,
+  password: string,
+  name: string,
+  login: string,
+}
+
+export interface IUser {
+  uuid: string;
+  name: string;
+  email: string;
+  login: string;
+  role: IRole;
+}
+
+export interface IRole {
+  uuid: string;
+  name: string;
+}
+
 export interface Response<T> {
   message: T;
 }

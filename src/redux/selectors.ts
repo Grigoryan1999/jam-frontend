@@ -7,6 +7,9 @@ export const categoriesSelector = (state: IInitialState) =>
 export const productsForOrderSelector = (state: IInitialState) =>
   state.categoryList.productsForOrder;
 
+export const authSelector = (state: IInitialState) =>
+  state.auth;
+
 export const viewedProductsForOrderSelector = (state: IInitialState) => {
   const categoryWithProducts = categoriesSelector(state);
 

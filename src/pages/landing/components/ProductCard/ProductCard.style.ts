@@ -7,6 +7,7 @@ export const ProductCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  max-width: 200px;
 `;
 
 export const Picture = styled.img`
