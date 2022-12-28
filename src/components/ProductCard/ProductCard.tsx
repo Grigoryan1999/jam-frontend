@@ -1,15 +1,14 @@
 import { FC, useState } from "react";
-import { Modal } from "../../../../components/Modal/Modal";
-import { IMarketProduct, IProduct } from "../../../../entities";
-import { SmallTitle, Text } from "../../../../global";
+import { Modal } from "../Modal/Modal";
+import { IMarketProduct, IProduct } from "../../entities";
+import { SmallTitle, Text } from "../../global";
+import { ProductPicture } from "../ProductPicture/ProductPicture";
 import {
-    EmptyPicture,
     FullProductInfo,
     MarketCost,
     MarketItemInfo,
     MarketListField,
     MarketsField,
-    Picture,
     Price,
     ProductCardContainer,
     ProductCount,
@@ -21,7 +20,7 @@ export const ProductCard: FC<IProductCardProps> = ({ productInfo }) => {
 
     return (
         <ProductCardContainer onClick={() => setIsOpen(true)}>
-            {productInfo.picture ? <Picture src={productInfo.picture} /> : <EmptyPicture src="./icons/logo.jpg" />}
+            <ProductPicture src={productInfo.picture} />
             <SmallTitle>{productInfo.name}</SmallTitle>
             <Price>
                 {
@@ -32,7 +31,7 @@ export const ProductCard: FC<IProductCardProps> = ({ productInfo }) => {
                 <ProductModalField>
                     <FullProductInfo>
                         <SmallTitle>{productInfo.name}</SmallTitle>
-                        {productInfo.picture ? <Picture src={productInfo.picture} /> : <EmptyPicture src="./icons/logo.jpg" />}
+                        <ProductPicture src={productInfo.picture} />
                         <Text>{productInfo.subscription}</Text>
                         {
                             productInfo.marketProduct.length !== 0 ?

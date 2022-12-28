@@ -7,7 +7,6 @@ import { AboutPage } from "./pages/about/AboutPage";
 import { LandingPage } from "./pages/landing/LandingPage";
 import { MapPage } from "./pages/map/MapPage";
 import { OrderPage } from "./pages/order/OrderPage";
-import { NotFountPage } from "./pages/pageNotFound/PageNotFound";
 import { authSelector } from "./redux/selectors";
 import GlobalStyles, { CenterWrapper, PageContainer } from "./global";
 import { CLOSE_DELAY } from "./assets/consts";
@@ -26,6 +25,7 @@ function App() {
   useEffect(() => {
     dispatch(signIn());
   }, [dispatch]);
+
   return (
     <div className="App">
       <ToastContainer autoClose={CLOSE_DELAY} />
@@ -38,11 +38,15 @@ function App() {
             <Route path="/order" element={<OrderPage />} />
             <Route path="/about" element={<AboutPage />} />
             {auth.login ? (
-              <Route path="/my" element={<UserPage />} />
+              <>
+                <Route path="/my" element={<UserPage />} />
+              </>
             ) : (
-              <Route path="/authorization" element={<AuthorizationPage />} />
+              <>
+                <Route path="/authorization" element={<AuthorizationPage />} />
+              </>
             )}
-            <Route path="*" element={<Navigate to="/" />} />
+            <Route path="*" element={<Navigate to="/my" />} />
           </Routes>
         </PageContainer>
       </CenterWrapper>

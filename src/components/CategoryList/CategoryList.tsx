@@ -2,18 +2,21 @@ import { Dispatch, FC, SetStateAction, useCallback, useEffect, useRef, useState 
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { CategoryListContainer, CategoryListField, SelectProductListField } from "./CategoryList.style";
-import { ICategory } from "../../../../entities";
-import { screenSize } from "../../../../assets/ScreenResolutions";
-import { CategoryItem } from "../../../../global";
+import { ICategory } from "../../entities";
+import { screenSize } from "../../assets/ScreenResolutions";
+import { CategoryItem } from "../../global";
 
 const itemListGap = 10;
 
-export const CategoryList: FC<ICategoryListProps> = ({categories, onSelectCategory}) => {
+export const CategoryList: FC<ICategoryListProps> = ({categories, onSelectCategory, editable=false}) => {
     const [hiddenItems, setHiddenItems] = useState<ICategory[]>();
     const menuListFieldRef = useRef<HTMLDivElement>(null);
     const [hiddenItemValue, setHiddenItemValue] = useState("");
 
     const changeCategoryListWidthHandle = useCallback(() => {
+        if(editable) {
+            return setHiddenItems([]);
+        }
         if(window.innerWidth < screenSize.mobileM) return;
         const containerWidth = menuListFieldRef.current?.clientWidth || 0;
         let containerElementWidth = 0;
@@ -27,7 +30,7 @@ export const CategoryList: FC<ICategoryListProps> = ({categories, onSelectCatego
                 setHiddenItems([]);
             }
         }
-    }, [categories]);
+    }, [categories, editable]);
 
     const selectHiddenItemHandle = (event: SelectChangeEvent<string>) => {
         setHiddenItemValue(event.target.value);
@@ -50,10 +53,10 @@ export const CategoryList: FC<ICategoryListProps> = ({categories, onSelectCatego
 
     return(
         <CategoryListContainer>
-            <CategoryListField ref={menuListFieldRef}>
+            <CategoryListField editable={editable} ref={menuListFieldRef}>
                 {
                     categories?.map((categoryElement: ICategory) => (
-                        <CategoryItem key={categoryElement.uuid} onClick={() => selectCategoryHandle(categoryElement.uuid)}>
+                        <CategoryItem editable={editable} key={categoryElement.uuid} onClick={() => selectCategoryHandle(categoryElement.uuid)}>
                             {categoryElement.name}
                         </CategoryItem>
                     ))
@@ -77,6 +80,7 @@ export const CategoryList: FC<ICategoryListProps> = ({categories, onSelectCatego
     );
 };
 export interface ICategoryListProps {
+    editable?: boolean;
     categories: ICategory[] | null;
     onSelectCategory: Dispatch<SetStateAction<string>>;
 }

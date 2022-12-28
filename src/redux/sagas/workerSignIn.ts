@@ -17,6 +17,7 @@ export function* workerSignIn(action?: ISignInAction): Generator {
       accessToken: localStorage.getItem('token'),
       ...userInfo.message,
       role: userInfo.message.role.name,
+      authError: '',
     }
 
     yield put(setUserInfo(auth));
