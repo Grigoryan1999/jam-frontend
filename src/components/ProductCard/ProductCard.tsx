@@ -1,9 +1,10 @@
-import { FC, useState } from "react";
+import { FC, useCallback, useState } from "react";
 import { Modal } from "../Modal/Modal";
 import { IMarketProduct, IProduct } from "../../entities";
 import { SmallTitle, Text } from "../../global";
 import { ProductPicture } from "../ProductPicture/ProductPicture";
 import {
+    ActionField,
     FullProductInfo,
     MarketCost,
     MarketItemInfo,
@@ -14,12 +15,21 @@ import {
     ProductCount,
     ProductModalField
 } from "./ProductCard.style";
+import { ActionButton } from "../ActionButton/ActionButton";
+import { EditCategoryModal } from "../EditCategoryModal/EditCategoryModal";
 
-export const ProductCard: FC<IProductCardProps> = ({ productInfo }) => {
+export const ProductCard: FC<IProductCardProps> = ({ productInfo, editable }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
         <ProductCardContainer onClick={() => setIsOpen(true)}>
+            {
+                editable &&
+                    <ActionField>
+                        <ActionButton buttonType='edit' onClick={(event: React.MouseEvent<HTMLButtonElement>) => {}} />
+                        <ActionButton buttonType='remove' onClick={(event: React.MouseEvent<HTMLButtonElement>) => {}} />
+                    </ActionField>
+            }
             <ProductPicture src={productInfo.picture} />
             <SmallTitle>{productInfo.name}</SmallTitle>
             <Price>
@@ -65,4 +75,5 @@ export const ProductCard: FC<IProductCardProps> = ({ productInfo }) => {
 
 export interface IProductCardProps {
     productInfo: IProduct;
+    editable: boolean;
 }

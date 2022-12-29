@@ -2,6 +2,7 @@ import { IMarket, IProductForOrder, ISignIn, ISignUp } from "./../../entities";
 import { ICategory, Response } from "../../entities";
 import {
   ADD_PRODUCT_TO_ORDER,
+  CHANGE_CATEGORY_ITEM,
   CHANGE_PRODUCT_COUNT,
   GET_ALL_CATEGORIES,
   GET_ALL_MARKETS,
@@ -94,6 +95,13 @@ export function AuthError(errorTitle: string) {
 export function setActivationRequired() {
   return {
     type: SET_ACTIVATION_REQUIRED,
+  } as const;
+}
+
+export function saveChangedCategory(categoryElement: ICategory) {
+  return {
+    type: CHANGE_CATEGORY_ITEM,
+    categoryElement
   } as const;
 }
 

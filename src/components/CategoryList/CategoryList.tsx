@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { CategoryListContainer, CategoryListField, SelectProductListField } from "./CategoryList.style";
 import { ICategory } from "../../entities";
 import { screenSize } from "../../assets/ScreenResolutions";
-import { CategoryItem } from "../../global";
+import { CategoryItem } from "../CategoryItem/CategoryItem";
 
 const itemListGap = 10;
 
@@ -56,9 +56,12 @@ export const CategoryList: FC<ICategoryListProps> = ({categories, onSelectCatego
             <CategoryListField editable={editable} ref={menuListFieldRef}>
                 {
                     categories?.map((categoryElement: ICategory) => (
-                        <CategoryItem editable={editable} key={categoryElement.uuid} onClick={() => selectCategoryHandle(categoryElement.uuid)}>
-                            {categoryElement.name}
-                        </CategoryItem>
+                        <CategoryItem
+                            editable={editable}
+                            key={categoryElement.uuid}
+                            onClick={() => selectCategoryHandle(categoryElement.uuid)}
+                            categoryElement={categoryElement}
+                        />
                     ))
                 }
             </CategoryListField>

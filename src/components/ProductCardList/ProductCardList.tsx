@@ -13,7 +13,11 @@ export const ProductCardList: FC<IProductCardListProps> = ({
   return (
     <ProductCardListContainer>
       {products?.map((productElement: IProduct) => (
-        <ProductCard key={productElement.uuid} productInfo={productElement} />
+        <ProductCard
+          key={productElement.uuid}
+          productInfo={productElement}
+          editable={editable}
+        />
       ))}
       {!editable && products?.length === 0 && (
         <CenterWrapper>

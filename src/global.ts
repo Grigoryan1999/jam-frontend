@@ -74,14 +74,6 @@ export const PrimaryButton = styled.button`
   ${ButtonStyle}
 `;
 
-export const CategoryItem = styled.button<{editable: boolean}>`
-  ${ButtonStyle}
-  border-radius: 30px;
-  margin-right: 10px;
-  box-sizing: border-box;
-  margin-bottom: ${props => props.editable ? '5px' : '0'};
-`;
-
 export const OrangeButton = styled.button`
   ${ButtonStyle}
   background-color: orange;

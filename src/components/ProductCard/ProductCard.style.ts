@@ -8,6 +8,7 @@ export const ProductCardContainer = styled.div`
   flex-direction: column;
   cursor: pointer;
   max-width: 200px;
+  position: relative;
 
   @media (${device.mobileM}) {
     width: 100%;
@@ -71,4 +72,10 @@ export const MarketListField = styled.div`
 export const MarketCost = styled.p`
 font-weight: 700;
   margin: 10px 0 10px 0;
+`;
+
+export const ActionField = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
 `;

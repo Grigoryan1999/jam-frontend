@@ -5,8 +5,7 @@ export const Picture = styled.img`
   background-color: gray;
   width: 100%;
   border-radius: 12px;
-  width: 200px;
-  height: 131px;
+  width: 100%;
 
   @media (${device.mobileM}) {
     width: 100%;
