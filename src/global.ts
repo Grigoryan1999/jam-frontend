@@ -74,13 +74,6 @@ export const PrimaryButton = styled.button`
   ${ButtonStyle}
 `;
 
-export const CategoryItem = styled.button`
-  ${ButtonStyle}
-  border-radius: 30px;
-  margin-right: 10px;
-  box-sizing: border-box;
-`;
-
 export const OrangeButton = styled.button`
   ${ButtonStyle}
   background-color: orange;

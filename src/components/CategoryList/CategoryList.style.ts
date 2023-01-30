@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { device } from "../../../../assets/ScreenResolutions";
-import { ScrollBarStyle } from "../../../../global";
+import { device } from "../../assets/ScreenResolutions";
+import { ScrollBarStyle } from "../../global";
 
 export const CategoryListContainer = styled.div`
   position: relative;

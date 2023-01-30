@@ -5,9 +5,9 @@ export const AboutPage: FC = () => {
 
     return(
         <div>
-            <BigTitle>about</BigTitle>
-            <Title>about</Title>
-            <SmallTitle>about</SmallTitle>
+            <BigTitle>Информацию о компании</BigTitle>
+            <Title>Руководство компании</Title>
+            
         </div>
     );
 }

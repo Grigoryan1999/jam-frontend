@@ -1,7 +1,7 @@
 import styled from "styled-components";
 export const ProductCardListContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   grid-gap: 10px;
   width: 100%;
 `;

@@ -1,0 +1,19 @@
+.Toastify__toast--error {
+    background-color: #d32f2f;
+}
+
+.Toastify__toast-body {
+ color: white;
+}
+
+.Toastify__toast-icon {
+    display: none;
+}
+
+.Toastify__toast > div[role^='progressbar'] {
+    visibility: hidden;
+}
+
+.Toastify__toast {
+    margin: 5px;
+}
