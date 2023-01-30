@@ -6,9 +6,7 @@ import { categoriesSelector } from "../../redux/selectors";
 import { CategoryList } from "../CategoryList/CategoryList";
 import { ProductCardList } from "../ProductCardList/ProductCardList";
 
-export const MenuComponent: FC<IMenuComponentProps> = ({
-  editable = false,
-}) => {
+export const MenuComponent: FC = () => {
   const categories = useSelector(categoriesSelector);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
 
@@ -27,12 +25,10 @@ export const MenuComponent: FC<IMenuComponentProps> = ({
   return (
     <>
       <CategoryList
-        editable={editable}
         categories={categories}
         onSelectCategory={setSelectedCategory}
       />
       <ProductCardList
-        editable={editable}
         products={
           categories?.find(
             (categoryElement: ICategory) =>
@@ -44,6 +40,3 @@ export const MenuComponent: FC<IMenuComponentProps> = ({
   );
 };
 
-export interface IMenuComponentProps {
-  editable?: boolean;
-}

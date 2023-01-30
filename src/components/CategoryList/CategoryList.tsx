@@ -4,25 +4,22 @@ import MenuItem from '@mui/material/MenuItem';
 import { CategoryListContainer, CategoryListField, SelectProductListField } from "./CategoryList.style";
 import { ICategory } from "../../entities";
 import { screenSize } from "../../assets/ScreenResolutions";
-import { CategoryItem } from "../CategoryItem/CategoryItem";
+import CategoryItem from "../CategoryItem/CategoryItem";
 
 const itemListGap = 10;
 
-export const CategoryList: FC<ICategoryListProps> = ({categories, onSelectCategory, editable=false}) => {
+export const CategoryList: FC<ICategoryListProps> = ({ categories, onSelectCategory }) => {
     const [hiddenItems, setHiddenItems] = useState<ICategory[]>();
     const menuListFieldRef = useRef<HTMLDivElement>(null);
     const [hiddenItemValue, setHiddenItemValue] = useState("");
 
     const changeCategoryListWidthHandle = useCallback(() => {
-        if(editable) {
-            return setHiddenItems([]);
-        }
-        if(window.innerWidth < screenSize.mobileM) return;
+        if (window.innerWidth < screenSize.mobileM) return;
         const containerWidth = menuListFieldRef.current?.clientWidth || 0;
         let containerElementWidth = 0;
-        for(let i = 0; i < (menuListFieldRef.current?.children.length || 0); i++) {
+        for (let i = 0; i < (menuListFieldRef.current?.children.length || 0); i++) {
             containerElementWidth += (menuListFieldRef.current?.children[i].clientWidth || 0) + itemListGap;
-            if(containerElementWidth >= containerWidth) {
+            if (containerElementWidth >= containerWidth) {
                 const hiddenListArray = categories?.slice(i);
                 setHiddenItems(hiddenListArray);
                 break;
@@ -30,17 +27,17 @@ export const CategoryList: FC<ICategoryListProps> = ({categories, onSelectCatego
                 setHiddenItems([]);
             }
         }
-    }, [categories, editable]);
+    }, [categories]);
 
     const selectHiddenItemHandle = (event: SelectChangeEvent<string>) => {
         setHiddenItemValue(event.target.value);
         onSelectCategory(event.target.value);
     };
 
-    const selectCategoryHandle = (categoryUuid: string) => {
+    const selectCategoryHandle = useCallback((categoryUuid: string) => {
         onSelectCategory(categoryUuid);
         setHiddenItemValue("");
-    };
+    }, []);
 
     useEffect(() => changeCategoryListWidthHandle(), [changeCategoryListWidthHandle]);
 
@@ -49,41 +46,39 @@ export const CategoryList: FC<ICategoryListProps> = ({categories, onSelectCatego
         return () => {
             window.removeEventListener('resize', changeCategoryListWidthHandle)
         }
-  }, [changeCategoryListWidthHandle])
+    }, [changeCategoryListWidthHandle])
 
-    return(
+    return (
         <CategoryListContainer>
-            <CategoryListField editable={editable} ref={menuListFieldRef}>
+            <CategoryListField ref={menuListFieldRef}>
                 {
                     categories?.map((categoryElement: ICategory) => (
                         <CategoryItem
-                            editable={editable}
                             key={categoryElement.uuid}
-                            onClick={() => selectCategoryHandle(categoryElement.uuid)}
+                            onClick={selectCategoryHandle}
                             categoryElement={categoryElement}
                         />
                     ))
                 }
             </CategoryListField>
-               {hiddenItems && hiddenItems?.length > 0 && <SelectProductListField>
-                    <Select
-                        displayEmpty
-                        value={hiddenItemValue}
-                        onChange={selectHiddenItemHandle}
-                        >
-                            <MenuItem value={""} style={{display: 'none'}}>Еще</MenuItem>
-                        {
-                            hiddenItems.map((categoryItem: ICategory) => (
-                                <MenuItem value={categoryItem.uuid} key={categoryItem.uuid}>{categoryItem.name}</MenuItem>
-                            ))
-                        }
-                    </Select>
-                </SelectProductListField>}
+            {hiddenItems && hiddenItems?.length > 0 && <SelectProductListField>
+                <Select
+                    displayEmpty
+                    value={hiddenItemValue}
+                    onChange={selectHiddenItemHandle}
+                >
+                    <MenuItem value={""} style={{ display: 'none' }}>Еще</MenuItem>
+                    {
+                        hiddenItems.map((categoryItem: ICategory) => (
+                            <MenuItem value={categoryItem.uuid} key={categoryItem.uuid}>{categoryItem.name}</MenuItem>
+                        ))
+                    }
+                </Select>
+            </SelectProductListField>}
         </CategoryListContainer>
     );
 };
 export interface ICategoryListProps {
-    editable?: boolean;
     categories: ICategory[] | null;
     onSelectCategory: Dispatch<SetStateAction<string>>;
 }

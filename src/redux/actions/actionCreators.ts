@@ -4,6 +4,7 @@ import {
   ADD_PRODUCT_TO_ORDER,
   CHANGE_CATEGORY_ITEM,
   CHANGE_PRODUCT_COUNT,
+  DELETE_CATEGORY_ITEM,
   GET_ALL_CATEGORIES,
   GET_ALL_MARKETS,
   REMOVE_PRODUCT_FROM_ORDER,
@@ -105,11 +106,20 @@ export function saveChangedCategory(categoryElement: ICategory) {
   } as const;
 }
 
+export function deleteCategory(categoryUuid: string) {
+  return {
+    type: DELETE_CATEGORY_ITEM,
+    categoryUuid
+  } as const;
+}
+
 export type CategoriesAction = ReturnType<
   | typeof setAllCategories
   | typeof addProductToOrder
   | typeof changeProductToOrderCount
   | typeof removeProductFromOrder
+  | typeof deleteCategory
+  | typeof saveChangedCategory
 >;
 
 export type MarketsAction = ReturnType<

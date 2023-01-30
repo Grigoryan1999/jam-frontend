@@ -7,9 +7,9 @@ export const CategoryListContainer = styled.div`
   width: 100%;
 `;
 
-export const CategoryListField = styled.div<{editable: boolean}>`
+export const CategoryListField = styled.div`
   width: calc(100% - 100px);
-  height: ${props => props.editable ? 'auto' : '38px'};
+  height: 38px;
   display: flex;
   flex-wrap: wrap;
   overflow-y: hidden;
@@ -18,7 +18,7 @@ export const CategoryListField = styled.div<{editable: boolean}>`
 
   @media (${device.mobileM}) {
     width: 100%;
-    flex-wrap: ${props => props.editable ? 'wrap' : 'nowrap'};
+    flex-wrap: nowrap;
     height: fit-content;
   }
 `;

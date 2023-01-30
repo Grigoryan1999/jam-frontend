@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction } from "react";
+import { Dispatch, FC, SetStateAction, useEffect, useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { InputLabel, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
@@ -6,25 +6,29 @@ import { ICategory } from "../../entities";
 import { OrangeButton } from "../../global";
 import { saveChangedCategory } from "../../redux/actions/actionCreators";
 import { Modal } from "../Modal/Modal";
+import { categoryEditFormDefault } from "../../assets/defaultValues";
 
 export const EditCategoryModal: FC<IEditCategoryModalProps> = ({
   isOpen,
+  category,
   onClose,
-  categoryItem,
 }) => {
   const dispatch = useDispatch();
-
-  const { register, handleSubmit } = useForm({
-    defaultValues: {
-      uuid: categoryItem.uuid,
-      name: categoryItem.name,
-      subscription: categoryItem.subscription
-    },
+  const { register, reset, handleSubmit } = useForm({
+    defaultValues: categoryEditFormDefault
   });
 
-  const onSaveChangesHandle = (values: any) => {
-    dispatch(saveChangedCategory(values));
+  const onSaveChangesHandle = (values: typeof categoryEditFormDefault) => {
+    dispatch(saveChangedCategory(values as ICategory));
   };
+
+  useEffect(() => {
+    reset({
+      uuid: category?.uuid,
+      name: category?.name,
+      subscription: category?.subscription
+    });
+  }, [category]);
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -36,10 +40,19 @@ export const EditCategoryModal: FC<IEditCategoryModalProps> = ({
           id="name"
           fullWidth
           margin="dense"
-          defaultValue={categoryItem.name}
           {...register("name", { required: true })}
         />
-        <OrangeButton>Сохранить</OrangeButton>
+        <InputLabel shrink htmlFor="subscription" margin="dense">
+          Введите описание категории
+        </InputLabel>
+        <TextField
+          id="subscription"
+          fullWidth
+          margin="dense"
+          rows={4}
+          {...register("subscription", { required: true })}
+        />
+        <OrangeButton type="submit">Сохранить</OrangeButton>
       </form>
     </Modal>
   );
@@ -47,6 +60,6 @@ export const EditCategoryModal: FC<IEditCategoryModalProps> = ({
 
 export interface IEditCategoryModalProps {
   onClose: Dispatch<SetStateAction<boolean>>;
-  categoryItem: ICategory;
+  category: ICategory | undefined;
   isOpen: boolean;
 }

@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import { authFormDefault } from "../../assets/defaultValues";
 import { BigTitle, CenterWrapper, OrangeButton, PrimaryButton } from "../../global";
 import { signIn, signUp } from "../../redux/actions/actionCreators";
 import { authSelector } from "../../redux/selectors";
@@ -27,21 +28,13 @@ export const AuthorizationPage: FC = () => {
     setLoading(false);
   }, [auth]);
 
-  const { register, handleSubmit } = useForm({
-    defaultValues: {
-      email: "",
-      password: "",
-      name: "",
-      login: "",
-      repeatePassword: "",
-    },
-  });
+  const { register, handleSubmit } = useForm({ defaultValues: authFormDefault });
 
   const onSignInHandler = () => {
     setSignIn((prev) => !prev);
   };
 
-  const onAuthorizationHandle = (authInfo: any) => {
+  const onAuthorizationHandle = (authInfo: typeof authFormDefault) => {
     setLoading(true);
     if (sighIn) {
       dispatch(
@@ -135,9 +128,9 @@ export const AuthorizationPage: FC = () => {
       )}
       {
         loading &&
-            <CenterWrapper>
-                <CircularProgress />
-            </CenterWrapper>
+        <CenterWrapper>
+          <CircularProgress />
+        </CenterWrapper>
       }
     </AuthorizationPageContainer>
   );

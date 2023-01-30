@@ -1,4 +1,4 @@
-import React, { FC, MouseEventHandler } from "react";
+import React, { FC } from "react";
 import { ActionButtonContainer, Icon } from "./ActionButton.style";
 
 type buttonType = "remove" | "edit";

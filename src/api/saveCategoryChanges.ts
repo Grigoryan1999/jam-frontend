@@ -8,5 +8,8 @@ export interface ICategoryChanges extends Action {
 }
 
 export default async function saveCategoryChanges(categoryElement: ICategory) {
-  return (await api.put(`${API_URL}/category/${categoryElement.uuid}`, {...categoryElement})).data;
+  return (await api.put(`${API_URL}/category/${categoryElement.uuid}`, {
+    name: categoryElement.name,
+    subscription: categoryElement.subscription
+  })).data;
 }

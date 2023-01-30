@@ -1,42 +1,24 @@
-import { FC, useCallback, useState } from "react";
+import { FC, useCallback, useState, memo } from "react";
 import { ICategory } from "../../entities";
 import { ActionButton } from "../ActionButton/ActionButton";
 import { EditCategoryModal } from "../EditCategoryModal/EditCategoryModal";
-import { ActionField, CategoryContainer } from "./CategoryItem.style";
+import { CategoryContainer } from "./CategoryItem.style";
 
-export const CategoryItem: FC<ICategoryItemProps> = ({
-  editable,
+const CategoryItem: FC<ICategoryItemProps> = ({
   onClick,
   categoryElement,
 }) => {
-  const [isCategoryEditModalOpen, setCategoryEditModalOpen] =
-    useState<boolean>(false);
-
-    const editButton = useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
-        event.stopPropagation();
-        setCategoryEditModalOpen(prev => !prev);
-    }, []);
 
   return (
-    <CategoryContainer editable={editable} onClick={onClick}>
+    <CategoryContainer onClick={() => onClick(categoryElement.uuid)}>
       {categoryElement.name}
-      {editable && (
-        <ActionField>
-          <ActionButton buttonType="edit" onClick={editButton}/>
-          <ActionButton buttonType="remove" onClick={editButton}/>
-        </ActionField>
-      )}
-      <EditCategoryModal
-        isOpen={isCategoryEditModalOpen}
-        onClose={setCategoryEditModalOpen}
-        categoryItem={categoryElement}
-      />
     </CategoryContainer>
   );
 };
 
+export default memo(CategoryItem); 
+
 export interface ICategoryItemProps {
-  editable: boolean;
-  onClick: () => void;
+  onClick: (categoryUuid: string) => void;
   categoryElement: ICategory;
 }
